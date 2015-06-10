@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+        "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+    <form-beans>
+        <form-bean name="ManageDepartmentsForm"
+                   type="ifmo.diploma.forms.EditDepartmentForm"/>
+
+        <form-bean name="ManagePositionsForm"
+                   type="ifmo.diploma.forms.EditPositionForm"/>
+
+        <form-bean name="ManageEmployeesForm"
+                   type="ifmo.diploma.forms.ManageEmployeesForm"/>
+
+        <form-bean name="AddEditEmployeeForm"
+                   type="ifmo.diploma.forms.AddEditEmployeeForm"/>
+
+
+        <form-bean name="SearchForm"
+                   type="ifmo.diploma.forms.SearchForm"/>
+
+        <form-bean name="LoginForm"
+                   type="ifmo.diploma.forms.LoginForm"/>
+
+        <form-bean name="VacanciesForm"
+                   type="ifmo.diploma.forms.VacanciesForm"/>
+
+        <form-bean name="DepartmentHistoryForm"
+                   type="ifmo.diploma.forms.DepartmentHistoryForm"/>
+
+        <form-bean name="PositionHistoryForm"
+                   type="ifmo.diploma.forms.PositionHistoryForm"/>
+
+        <form-bean name="JobHistoryForm"
+                   type="ifmo.diploma.forms.JobHistoryForm"/>
+
+        <form-bean name="EducationHistoryForm"
+                   type="ifmo.diploma.forms.EducationHistoryForm"/>
+
+        <form-bean name="ExtraInfoForm"
+                   type="ifmo.diploma.forms.ExtraInfoForm"/>
+
+
+    </form-beans>
+
+    <global-exceptions>
+        <exception
+                type="java.lang.Exception"
+                key="pcm.app.error"
+                path="/pages/exception.jsp"/>
+    </global-exceptions>
+
+    <global-forwards>
+        <forward name="Login" path="pages/login.jsp"/>
+        <!--<forward name="not found" path="/pagesnot_found.jsp"/>-->
+        <forward name="Home" path="/ManageEmployees.do" redirect="true"/>
+    </global-forwards>
+
+    <action-mappings>
+
+        <action
+                path="/Login"
+                type="ifmo.diploma.actions.LoginAction"
+                name="LoginForm"
+                scope="request"
+                input=".login.page"
+                validate="true"
+                >
+            <!--<forward name="View" path=".login.page"/>-->
+        </action>
+
+        <action
+                path="/ManageEmployees"
+                type="ifmo.diploma.actions.ManageEmployeesAction"
+                name="ManageEmployeesForm"
+                scope="request"
+                validate="false"
+                parameter="method">
+            <forward name="View" path=".manage.employees"/>
+            <forward name="AddEditEmployee" path="AddEditEmployee.do" redirect="true"/>
+            <forward name="DepartmentHistory" path="DepartmentHistory.do" redirect="true"/>
+            <forward name="PositionHistory" path="PositionHistory.do" redirect="true"/>
+            <forward name="JobHistory" path="JobHistory.do" redirect="true"/>
+            <forward name="EducationHistory" path="EducationHistory.do" redirect="true"/>
+            <forward name="Extra" path="EditExtraInfo.do" redirect="true"/>
+        </action>
+
+        <action
+                path="/AddEditEmployee"
+                type="ifmo.diploma.actions.AddEditEmployeeAction"
+                name="AddEditEmployeeForm"
+                scope="request"
+                validate="false"
+                parameter="method">
+            <forward name="View" path=".add.edit.employee"/>
+            <forward name="ManageEmployees" path="/ManageEmployees.do" redirect="true"/>
+        </action>
+
+        <action
+                path="/AddEditEmployeeValidate"
+                type="ifmo.diploma.actions.AddEditEmployeeAction"
+                name="AddEditEmployeeForm"
+                scope="request"
+                input=".error"
+                validate="true"
+                parameter="method">
+            <forward name="View" path=".add.edit.employee"/>
+            <forward name="ManageEmployees" path="/ManageEmployees.do" redirect="true"/>
+        </action>
+
+        <action
+                path="/Search"
+                type="ifmo.diploma.actions.SearchAction"
+                name="SearchForm"
+                scope="request"
+                validate="false"
+                parameter="method">
+            <forward name="View" path=".search.employees"/>
+        </action>
+
+        <action
+                path="/SearchValidate"
+                type="ifmo.diploma.actions.SearchAction"
+                name="SearchForm"
+                scope="request"
+                input=".error"
+                validate="true"
+                parameter="method">
+            <forward name="View" path=".search.employees"/>
+        </action>
+
+        <action
+                path="/Vacancies"
+                type="ifmo.diploma.actions.VacanciesAction"
+                name="VacanciesForm"
+                scope="request"
+                validate="false"
+                parameter="method">
+            <forward name="View" path=".vacancies"/>
+        </action>
+
+        <action
+                path="/DepartmentHistory"
+                type="ifmo.diploma.actions.DepartmentHistoryAction"
+                name="DepartmentHistoryForm"
+                scope="request"
+                validate="false"
+                parameter="method">
+            <forward name="View" path=".department.history"/>
+        </action>
+
+        <action
+                path="/PositionHistory"
+                type="ifmo.diploma.actions.PositionHistoryAction"
+                name="PositionHistoryForm"
+                scope="request"
+                validate="false"
+                parameter="method">
+            <forward name="View" path=".position.history"/>
+        </action>
+
+        <action
+                path="/PositionHistoryValidate"
+                type="ifmo.diploma.actions.PositionHistoryAction"
+                name="PositionHistoryForm"
+                scope="request"
+                validate="true"
+                input=".error"
+                parameter="method">
+            <forward name="View" path=".position.history"/>
+        </action>
+
+        <action
+                path="/DepartmentHistoryValidate"
+                type="ifmo.diploma.actions.DepartmentHistoryAction"
+                name="DepartmentHistoryForm"
+                scope="request"
+                validate="true"
+                input=".error"
+                parameter="method">
+            <forward name="View" path=".department.history"/>
+        </action>
+
+        <action
+                path="/JobHistory"
+                type="ifmo.diploma.actions.JobHistoryAction"
+                name="JobHistoryForm"
+                scope="request"
+                validate="false"
+                parameter="method">
+            <forward name="View" path=".job.history"/>
+        </action>
+
+        <action
+                path="/JobHistoryValidate"
+                type="ifmo.diploma.actions.JobHistoryAction"
+                name="JobHistoryForm"
+                input=".error"
+                scope="request"
+                validate="true"
+                parameter="method">
+            <forward name="View" path=".job.history"/>
+        </action>
+
+        <action
+                path="/EducationHistory"
+                type="ifmo.diploma.actions.EducationHistoryAction"
+                name="EducationHistoryForm"
+                scope="request"
+                validate="false"
+                parameter="method">
+            <forward name="View" path=".education.history"/>
+        </action>
+
+        <action
+                path="/EducationHistoryValidate"
+                type="ifmo.diploma.actions.EducationHistoryAction"
+                name="EducationHistoryForm"
+                scope="request"
+                validate="true"
+                input=".error"
+                parameter="method">
+            <forward name="View" path=".education.history"/>
+        </action>
+
+        <action
+                path="/ManageDepartments"
+                type="ifmo.diploma.actions.EditDepartmentsAction"
+                name="ManageDepartmentsForm"
+                scope="request"
+                validate="false"
+                parameter="method">
+            <forward name="View" path=".manage.departments"/>
+        </action>
+
+        <action
+                path="/ManageDepartmentsValidate"
+                type="ifmo.diploma.actions.EditDepartmentsAction"
+                name="ManageDepartmentsForm"
+                input=".error"
+                scope="request"
+                validate="true"
+                parameter="method">
+            <forward name="View" path=".manage.departments"/>
+        </action>
+
+        <action
+                path="/ManagePositions"
+                type="ifmo.diploma.actions.EditPositionAction"
+                name="ManagePositionsForm"
+                scope="request"
+                validate="false"
+                parameter="method">
+            <forward name="View" path=".manage.positions"/>
+        </action>
+
+        <action
+                path="/ManagePositionsValidate"
+                type="ifmo.diploma.actions.EditPositionAction"
+                name="ManagePositionsForm"
+                scope="request"
+                input=".error"
+                validate="true"
+                parameter="method">
+            <forward name="View" path=".manage.positions"/>
+        </action>
+
+        <action
+                path="/EditExtraInfo"
+                type="ifmo.diploma.actions.EditExtraInfoAction"
+                name="ExtraInfoForm"
+                scope="request"
+                validate="false"
+                parameter="method">
+            <forward name="View" path=".extra.info"/>
+        </action>
+
+        <action
+                path="/EditExtraInfoValidate"
+                type="ifmo.diploma.actions.EditExtraInfoAction"
+                name="ExtraInfoForm"
+                input=".error"
+                scope="request"
+                validate="true"
+                parameter="method">
+            <forward name="View" path=".extra.info"/>
+        </action>
+
+    </action-mappings>
+
+    <message-resources parameter="ApplicationResources"/>
+
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property
+                property="definitions-config"
+                value="/WEB-INF/conf/tiles-defs.xml"/>
+        <set-property property="moduleAware" value="true"/>
+    </plug-in>
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames"
+                      value="/org/apache/struts/validator/validator-rules.xml,
+                             /WEB-INF/conf/validation.xml"/>
+      </plug-in>
+    
+</struts-config>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+        "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<tiles-definitions>
+    <definition name=".login.page" path="/pages/login.jsp"/>
+
+    <definition name=".manage.employees" path="/tiles/common_layout.jsp">
+        <put name="title" value="Редактировать штат"/>
+        <put name="headerText" value="Редактировать штат"/>
+        <put name="main" value="/pages/manage_employees.jsp"/>
+    </definition>
+
+    <definition name=".add.edit.employee" path="/tiles/common_layout.jsp">
+        <put name="title" value="Личные данные сотрудника"/>
+        <put name="headerText" value="Личные данные сотрудника"/>
+        <put name="main" value="/pages/add_edit_employee.jsp"/>
+    </definition>
+
+    <definition name=".search.employees" path="/tiles/common_layout.jsp">
+        <put name="title" value="Поиск сотрудников"/>
+        <put name="headerText" value="Поиск сотрудников"/>
+        <put name="main" value="/pages/search_employee.jsp"/>
+    </definition>
+
+    <definition name=".vacancies" path="/tiles/common_layout.jsp">
+        <put name="title" value="Вакансии"/>
+        <put name="headerText" value="Вакансии"/>
+        <put name="main" value="/pages/vacancies.jsp"/>
+    </definition>
+
+    <definition name=".department.history" path="/tiles/common_layout.jsp">
+        <put name="title" value="История подразделений"/>
+        <put name="headerText" value="Подразделения"/>
+        <put name="main" value="/pages/department_history.jsp"/>
+    </definition>
+
+    <definition name=".position.history" path="/tiles/common_layout.jsp">
+        <put name="title" value="История должностей"/>
+        <put name="headerText" value="Должности"/>
+        <put name="main" value="/pages/position_history.jsp"/>
+    </definition>
+
+    <definition name=".job.history" path="/tiles/common_layout.jsp">
+        <put name="title" value="Трудовая деятельность"/>
+        <put name="headerText" value="Трудовая деятельность"/>
+        <put name="main" value="/pages/job_history.jsp"/>
+    </definition>
+
+    <definition name=".education.history" path="/tiles/common_layout.jsp">
+        <put name="title" value="Образование"/>
+        <put name="headerText" value="Образование"/>
+        <put name="main" value="/pages/education_history.jsp"/>
+    </definition>
+
+    <definition name=".manage.departments" path="/tiles/common_layout.jsp">
+        <put name="title" value="Редактирование Подразделений"/>
+        <put name="headerText" value="Редактирование Подразделений"/>
+        <put name="main" value="/pages/manage_departments.jsp"/>
+    </definition>
+
+    <definition name=".manage.positions" path="/tiles/common_layout.jsp">
+        <put name="title" value="Редактирование Должностей"/>
+        <put name="headerText" value="Редактирование Должностей"/>
+        <put name="main" value="/pages/manage_positions.jsp"/>
+    </definition>
+
+    <definition name=".extra.info" path="/tiles/common_layout.jsp">
+        <put name="title" value="Дополнительно"/>
+        <put name="headerText" value="Дополнительно"/>
+        <put name="main" value="/pages/extra_info.jsp"/>
+    </definition>
+
+    <definition name=".error" path="/tiles/common_layout.jsp">
+        <put name="title" value="Ошибка"/>
+        <put name="headerText" value="Ошибка"/>
+        <put name="main" value="/pages/error.jsp"/>
+    </definition>
+
+</tiles-definitions>

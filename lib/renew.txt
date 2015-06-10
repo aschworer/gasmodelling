@@ -1,0 +1,11 @@
+добавить:
+
++commons-chain-1.1.jar
++struts-core-1.3.5.jar
++struts-taglib-1.3.5.jar
++struts-tiles-1.3.5.jar
+
+заменить:
+
+struts.jar
+struts-el.jar на struts-el-1.3.5.jar

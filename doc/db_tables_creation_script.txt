@@ -1,0 +1,124 @@
+create table places(
+id int NOT NULL auto_increment,
+name varchar(100) NOT NULL UNIQUE,
+PRIMARY KEY(id)
+)CHARACTER SET utf8;
+
+create table education_types(
+id int NOT NULL auto_increment,
+type varchar(100) NOT NULL UNIQUE,
+PRIMARY KEY(id)
+)CHARACTER SET utf8;
+
+create table positions(
+id int NOT NULL auto_increment,
+name varchar(100) NOT NULL UNIQUE,
+requirements varchar(100),
+conditions varchar(100),
+PRIMARY KEY(id)
+)CHARACTER SET utf8;
+
+create table departments(
+id int NOT NULL auto_increment,
+name varchar(100) NOT NULL UNIQUE,
+PRIMARY KEY(id)
+)CHARACTER SET utf8;
+
+create table employees(
+id int NOT NULL auto_increment,
+firstname varchar(100) NOT NULL,
+lastname varchar(100) NOT NULL,
+middlename varchar(100)  NOT NULL,
+passport_no int NOT NULL,
+passport_ser int NOT NULL,
+passport_received_when date NOT NULL,
+passport_received_from varchar(200) NOT NULL,
+passport_received_where varchar(200) NOT NULL,
+passport_copy_filename varchar(200),
+resume_filename varchar(200),
+photo_filename varchar(200),
+charachteristics varchar(1000),
+current_position int,
+current_department int,
+PRIMARY KEY(id),
+FOREIGN KEY(current_department) REFERENCES departments(id),
+FOREIGN KEY(current_position) REFERENCES positions(id)
+)CHARACTER SET utf8;
+
+create table shedules(
+id int NOT NULL auto_increment,
+employee int NOT NULL,
+mondayFlag enum('true','false'),
+tuesdayFlag enum('true','false'),
+wednesdayFlag enum('true','false'),
+thursdayFlag enum('true','false'),
+fridayFlag enum('true','false'),
+saturdayFlag enum('true','false'),
+sundayFlag enum('true','false'),
+PRIMARY KEY(id),
+FOREIGN KEY(employee) REFERENCES employees(id) ON DELETE CASCADE
+)CHARACTER SET utf8;
+
+create table employee_job_history(
+id int NOT NULL auto_increment,
+employee int NOT NULL,
+company VARCHAR(200),
+position VARCHAR(100),
+start_date date,
+end_date date,
+notes VARCHAR(1000),
+PRIMARY KEY(id),
+FOREIGN KEY(employee) REFERENCES employees(id) ON DELETE CASCADE
+)CHARACTER SET utf8;
+
+create table employee_education(
+id int NOT NULL auto_increment,
+start_date date,
+end_date date,
+document_copy_filename varchar(200),
+document_no varchar(200),
+education_type int NOT NULL,
+employee int NOT NULL,
+place int NOT NULL,
+PRIMARY KEY(id),
+FOREIGN KEY(education_type) REFERENCES education_types(id),
+FOREIGN KEY(employee) REFERENCES employees(id) ON DELETE CASCADE,
+FOREIGN KEY(place) REFERENCES places(id)
+)CHARACTER SET utf8;
+
+
+create table extra_information(
+id int NOT NULL auto_increment,
+employee int NOT NULL,
+document_copy_filename varchar(200),
+document_no varchar(200),
+achievement_name varchar(50),
+achievement_description varchar(1000),
+PRIMARY KEY(id),
+FOREIGN KEY(employee) REFERENCES employees(id) ON DELETE CASCADE
+)CHARACTER SET utf8;
+
+
+create table positions_history(
+id int NOT NULL auto_increment,
+employee int NOT NULL,
+changed_to int NOT NULL,
+changed_date date,
+FOREIGN KEY(changed_to) REFERENCES positions(id),
+FOREIGN KEY(employee) REFERENCES employees(id) ON DELETE CASCADE,
+PRIMARY KEY(id)
+)CHARACTER SET utf8;
+
+create table departments_history(
+id int NOT NULL auto_increment,
+employee int NOT NULL,
+changed_to int NOT NULL,
+changed_date date,
+FOREIGN KEY(changed_to) REFERENCES departments(id),
+FOREIGN KEY(employee) REFERENCES employees(id) ON DELETE CASCADE,
+PRIMARY KEY(id)
+)CHARACTER SET utf8;
+
+INSERT INTO education_types (type) VALUES ('Высшее');
+INSERT INTO education_types (type) VALUES ('Среднее');
+INSERT INTO education_types (type) VALUES ('Незаконченное высшее');
