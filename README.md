@@ -2,7 +2,9 @@
 
 ### What is this repository for? ###
 
-Information System: Modelling and optimization of natural gas processing parameters (Struts, MySQL, Maven, Hibernate), 2008
+Information System:
+
+Modelling and optimization of natural gas processing parameters (Struts, MySQL, Maven, Hibernate), 2007
 
 Version: 09
 
